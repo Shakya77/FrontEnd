@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="traffic-light">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+    <script>
+      function switchLights() {
+        const lights = document.querySelectorAll(".light");
+
+        lights.forEach((light, index) => {
+          setTimeout(() => {
+            light.classList.add("active");
+          }, index * 200); // Change 200 to the delay you want in milliseconds
+        });
+
+        setTimeout(() => {
+          lights.forEach((light) => {
+            light.classList.remove("active");
+          });
+          switchLights(); // Repeat the sequence
+        }, lights.length * 200); // Change 200 to the total duration of the sequence in milliseconds
+      }
+
+      switchLights(); // Start the sequence
+    </script>
+  </body>
+</html>
